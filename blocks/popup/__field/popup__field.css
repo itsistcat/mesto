@@ -1,0 +1,14 @@
+.popup__field {
+    height: 57px;
+    border: none;
+    border-bottom: 1px solid #bcbcc4;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    outline: none;
+  }
+  
+  .popup__field:a {
+    outline-color: #bcbcc4;
+  }
