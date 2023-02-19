@@ -9,6 +9,6 @@
     outline: none;
   }
   
-  .popup__field:a {
+  .popup__field:focus {
     outline-color: #bcbcc4;
   }
