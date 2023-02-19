@@ -1,7 +1,7 @@
 .profile__add-btn {
     width: 22px;
     height: 22px;
-    background: center url(/images/addBtn.svg) no-repeat;
+    background: center url(../../../images/addBtn.svg) no-repeat;
     padding: 22px 74px;
     border: 2px solid white;
     margin: 33px 0 auto auto;
