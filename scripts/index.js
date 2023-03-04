@@ -31,7 +31,7 @@ const template = document.querySelector('.template');
 // Большие карточки
 const popupImage = document.querySelector('.popup_type_image');
 const photoItem = popupImage.querySelector('.fullscreen');
-const photoSubt = popupImage.querySelector('.fullscreen__subtitle');
+const photoSubt = popupImage.querySelector('.fullscreen-subtitle');
 const popupImageClose  = popupImage.querySelector('.popup__close');
 
 
