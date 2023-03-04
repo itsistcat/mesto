@@ -8,9 +8,9 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    transition: opacity .1s linear;
+    transition: opacity .6s linear;
 }
 
 .elements__delete:hover {
-    opacity: .8;
+    opacity: .6;
   }
