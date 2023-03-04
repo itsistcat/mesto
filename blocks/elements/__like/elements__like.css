@@ -15,6 +15,3 @@
     opacity: 0.8;
   }
 
-  .elements__like:focus{
-    background: url(../../../images/heart-black.svg);
-  }

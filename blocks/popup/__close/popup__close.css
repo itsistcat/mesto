@@ -9,6 +9,7 @@
   background-image: url('../../../images/CloseIcon.png');
   background-color: transparent;
   cursor: pointer;
+  transition: opacity .8s linear;
 }
 
 .popup__close:hover {

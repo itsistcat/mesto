@@ -31,6 +31,7 @@
 
         <!-- Элементы -->
         <section class="elements">
+            <!-- 
             <ul class="elements__list">
                 <li class="elements__item">
                     <img class="elements__photo" src="images/cherkov.jpg" alt="Карачаевск">
@@ -80,6 +81,7 @@
                     </div>
                 </li>
             </ul>
+-->
         </section>
     </main>
 
@@ -87,17 +89,57 @@
         <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
+    <!-- Редактирование профиля -->
+    <div class="popup popup_edit_profile">
         <div class="popup__container">
             <h2 class="popup__title">Редактировать профиль</h2>
             <form name="popup_form" class="popup__form">
-                <input class="popup__field popup__field_name" value="Жак-Ив Кусто" type="text" name="name">
-                <input class="popup__field popup__field_job" value="Исследователь океана" type="text" name="job">
+                <input class="popup__field popup__field_name" value="Жак-Ив Кусто" type="text" name="name" placeholder="Имя" required>
+                <input class="popup__field popup__field_job" value="Исследователь океана" type="text" placeholder="Работа" name="job">
                 <button aria-label="сохранить" class="popup__save" type="submit">Сохранить</button>
                 <button aria-label="закрыть" class="popup__close" type="button"></button>
             </form>
         </div>
     </div>
+
+    <!-- Форма добавления новой карточки -->
+    <div class="popup popup_add_place">
+        <div class="popup__container">
+            <h2 class="popup__title">Новое место</h2>
+            <form name="popup_form popup_form-place" class="popup__form">
+                <input class="popup__field popup__field_place" type="text" name="name" placeholder="Название" required>
+                <input class="popup__field popup__field_url" type="text" name="link" placeholder="Ссылка на картинку" required>
+                <button aria-label="сохранить" class="popup__save" type="submit">Создать</button>
+                <button aria-label="закрыть" class="popup__close" type="button"></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Карточки -->
+    <template class="template template-list">
+        <ul class="elements__list">
+            <li class="elements__item">
+                <img src="" alt="" class="elements__photo">
+                <button aria-label="удаление" class="elements__delete" type="button"></button>
+                <div class="elements__description">
+                    <h2 class="elements__title"></h2>
+                    <button aria-label="лайк" class="elements__like" type="button"></button>
+                </div>
+            </li>
+        </ul>
+    </template>
+
+
+    <!-- Открытие картинки -->
+    <div class="popup popup_type_image">
+        <div class="popup__container_image">
+            <button type="button" class="popup__close"></button>
+            <img class="fullscreen" src="#" alt="">
+            <p class="fullscreen__subtitle"></p>
+        </div>
+    </div>
+
+
     <script src="scripts/index.js"></script>
 </body>
 
