@@ -3,3 +3,9 @@
     border-bottom: red 1px solid;
    opacity: 1; 
 }
+
+@media screen and (max-width: 767px) {
+    .popup__input_active {
+      width: 238px;
+    }
+  }
