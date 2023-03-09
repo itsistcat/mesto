@@ -31,34 +31,34 @@ const photoSubt = popupImage.querySelector('.fullscreen-subtitle');
 function openPopup(popupEl) {
   popupEl.classList.add('popup__opened');
   document.addEventListener('keyup', handleEsc);
-  popupEl.addEventListener('click', closeByClickOverlay);
+
  
 }
 // Закрытие
 function closePopup(popupEl) {
   popupEl.classList.remove('popup__opened');
   document.removeEventListener('keyup', handleEsc);
-  popupEl.removeEventListener('click', closeByClickOverlay);
+
 }
 
 // Закрытие всех форм
 document.querySelectorAll('.popup__close').forEach(button => {
   const buttonsPopup = button.closest('.popup'); 
   button.addEventListener('click', () => closePopup(buttonsPopup));
+  buttonsPopup.addEventListener('click', closeByClickOverlay);
 });
 
 // Закрытие форм с помощью кнопки Esc
 function handleEsc(evt) {
-  const openedPopup = document.querySelector('.popup__opened'); // ищем открытый попап в document
   if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup__opened'); // ищем открытый попап в document
     closePopup(openedPopup);
   }
 }
 // Закрытие форм оверлэй
 function closeByClickOverlay(evt) {
-  const openedPopup = document.querySelector('.popup__opened');
   if (evt.target === evt.currentTarget) {
-    closePopup(openedPopup);
+    closePopup(evt.currentTarget);
   }
 };
 
@@ -83,11 +83,12 @@ formEdit.addEventListener('submit', handleFormSubmitEdit); // Обработчи
 
 
 // Открытие окна "добавление новой карточки"
+const popupSave = formAdd.querySelector('.popup__save');
 placeAddBtn.addEventListener('click', function () {
   openPopup(popupAdd);
 
-  popupAdd.querySelector('.popup__save').setAttribute('disabled', true)
-  popupAdd.querySelector('.popup__save').classList.add('popup__save_disabled');
+  popupSave.setAttribute('disabled', true)
+  popupSave.classList.add('popup__save_disabled');
   
 });
 
@@ -165,8 +166,6 @@ function handleFormImage(popupImageData) {
   photoItem.alt = popupImageData.name;
   photoSubt.textContent = popupImageData.name;
 }
-///////////////////////////////////
-
 
 
 const options = {
@@ -176,12 +175,9 @@ const options = {
   disableButtonClass: 'popup__save_disabled',
   inputSectionSelector: '.popup__input-element',
   inputErrorSelector: '.popup__input-error',
-  classError: 'popup__input-error_invalid'
+  classError: 'popup__input_active'
 }
 
 enableValidation(options);
 
 
-
-
-//const InputElement = document.querySelector('.popup__input');

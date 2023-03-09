@@ -1,4 +1,4 @@
-span.popup__input-error {
+.popup__input-error {
     color: red;
     font-size: 12px;
     position: absolute;

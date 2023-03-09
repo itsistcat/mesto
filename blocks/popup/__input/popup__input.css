@@ -13,5 +13,12 @@
 }
 
 .popup__input:focus {
-  outline-color: #bcbcc4;
+  outline: none;
+  /*outline-color: #bcbcc4;*/
 }
+
+@media screen and (max-width: 767px){
+  .popup__input {
+    width: 238px;
+  }
+  }
