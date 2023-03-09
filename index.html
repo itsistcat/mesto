@@ -95,9 +95,19 @@
             <h2 class="popup__title">Редактировать профиль</h2>
             <button aria-label="закрыть" class="popup__close" type="button"></button>
             <form name="popup_form" class="popup__form">
-                <input class="popup__field popup__field_name" type="text" name="name" placeholder="Имя" required>
-                <input class="popup__field popup__field_job" type="text" placeholder="Работа" name="job">
-                <button aria-label="сохранить" class="popup__save" type="submit">Сохранить</button> 
+                <fieldset class="popup__block">
+                    <div class="popup__input-element">
+                        <input class="popup__input popup__input_name" type="text" name="name" placeholder="Имя"
+                            minlength="2" maxlength="40" required>
+                        <span class="popup__input-error" id="nameInput-error"></span>
+                    </div>
+                    <div class="popup__input-element">
+                        <input class="popup__input popup__input_job" type="text" placeholder="Работа" name="job"
+                            minlength="2" maxlength="200" required>
+                        <span class="popup__input-error" id="jobInput-error"></span>
+                    </div>
+                </fieldset>
+                <button aria-label="сохранить" class="popup__save" type="submit">Сохранить</button>
             </form>
         </div>
     </div>
@@ -108,8 +118,19 @@
             <h2 class="popup__title">Новое место</h2>
             <button aria-label="закрыть" class="popup__close" type="button"></button>
             <form name="popup_form popup_form-place" class="popup__form">
-                <input class="popup__field popup__field_place" type="text" name="name" placeholder="Название" required>
-                <input class="popup__field popup__field_url" type="text" name="link" placeholder="Ссылка на картинку" required>
+
+                <fieldset class="popup__block">
+                    <div class="popup__input-element">
+                        <input class="popup__input popup__input_place" type="text" name="name" placeholder="Название"
+                            minlength="2" maxlength="30" required>
+                        <span class="popup__input-error" id="typePlace-error"></span>
+                    </div>
+                    <div class="popup__input-element">
+                        <input class="popup__input popup__input_url" type="url" name='typeUrl' id="typeUrl" name="link" placeholder="Ссылка на картинку" required>
+                        <span class="popup__input-error" id="typeUrl-error"></span>
+                    </div>
+                </fieldset>
+
                 <button aria-label="сохранить" class="popup__save" type="submit">Создать</button>
             </form>
         </div>
@@ -139,8 +160,10 @@
         </div>
     </div>
 
-
+    <script src="scripts/Validate.js"></script>
+    <script src="scripts/card.js"></script>
     <script src="scripts/index.js"></script>
+
 </body>
 
 </html>
