@@ -54,7 +54,8 @@ function closePopup(popupEl) {
 // Открытие формы редактирования при нажатии 
 profileEditBtn.addEventListener('click', function () {
   //включение кнопки
-  popupEditFormValidator._enableButton();
+  popupEditFormValidator.resetValidation();
+  
   // Передача значение
   nameEditPopup.value = profileName.textContent;
   jobEditPopup.value = profileJob.textContent;
@@ -62,7 +63,7 @@ profileEditBtn.addEventListener('click', function () {
 
 });
 
-// Функция отправки формы
+// Обработка формы добавления места
 function handleFormSubmitEdit(event) {
   event.preventDefault(); //отмена стандартной отправки формы
   //"возврат" значений
@@ -82,10 +83,6 @@ function handleFormSubmitAdd(event) {
 
   closePopup(popupAdd);
   formAdd.reset();
-  // Делает кнопку неактивной после отправки формы
-  popupAddFormValidator._toggleButtonState();
-  //event.submitter.classList.add('popup__save_disabled');
-  //event.submitter.disabled = true;
 }
 formAdd.addEventListener('submit', handleFormSubmitAdd);
 
@@ -121,7 +118,7 @@ function closeByClickOverlay(evt) {
 };
 
 function createCard(item) {
-  const card = new Card(item, template);
+  const card = new Card(item, template, handleFormImage);
   return card.createItemCard();
 }
 
@@ -145,12 +142,10 @@ function addCard(card, itemBox, newItem) {
 
 
 // Открытие окна "добавление новой карточки"
-const popupSave = formAdd.querySelector('.popup__save');
 placeAddBtn.addEventListener('click', function () {
+  // Делает кнопку неактивной перед отправкой формы
+  popupAddFormValidator.toggleButtonState();
   openPopup(popupAdd);
-
-  popupSave.setAttribute('disabled', true)
-  popupSave.classList.add('popup__save_disabled');
   
 });
 

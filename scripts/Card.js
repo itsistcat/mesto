@@ -1,12 +1,11 @@
-import { handleFormImage } from './index.js';
-
 
 export default class Card {
-    constructor(data, template) {
+    constructor(data, template, handleFormImage) {
         this._imageLink = data.link;
         this._imageName = data.name;
         this._name = data.name;
         this._template = template;
+        this._handleFormImage = handleFormImage;
     }
     
 
@@ -19,7 +18,7 @@ export default class Card {
             this._handleRemoveButtonClick(evt);
           });
           this._cardsElementImage.addEventListener('click', () => {
-            handleFormImage(this._cardsElementImage.src, this._cardsElementImage.alt);
+            this._handleFormImage(this._cardsElementImage.src, this._cardsElementImage.alt);
           });
     }
 
