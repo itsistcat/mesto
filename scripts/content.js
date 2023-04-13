@@ -1,5 +1,5 @@
 // Карточки 
-const initialCards = [
+export const initialCards = [
     {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -25,4 +25,16 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
+
+  export const options = {
+    formSelector: '.popup__form',
+    submitSelector: '.popup__save',
+    inputSelector: '.popup__input',
+    disableButtonClass: 'popup__save_disabled',
+    inputSectionSelector: '.popup__input-element',
+    inputErrorSelector: '.popup__input-error',
+    classError: 'popup__input_active'
+  }
+  
+
   
