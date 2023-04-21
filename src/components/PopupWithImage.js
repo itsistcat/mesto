@@ -1,9 +1,11 @@
 import Popup from './Popup.js';
 
 export default class PopupWithImage extends Popup {
-    _photoItem = this._popup.querySelector('.fullscreen');
-    _photoSubt = this._popup.querySelector('.fullscreen-subtitle');
-
+    constructor(popup, photoItem, photoSubt) {
+        super(popup);
+        this._photoItem = photoItem;
+        this._photoSubt = photoSubt;
+    }
     open(imageLink, imageName) {
         super.open();
         this._photoItem.src = imageLink;

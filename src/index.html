@@ -42,15 +42,15 @@
         <div class="popup__container">
             <h2 class="popup__title">Редактировать профиль</h2>
             <button aria-label="закрыть" class="popup__close" type="button"></button>
-            <form name="popup_form" class="popup__form">
+            <form name="popup_form" class="popup__form popup_form-profile">
                 <fieldset class="popup__block">
                     <div class="popup__input-element">
-                        <input class="popup__input popup__input_name" type="text" name="name" placeholder="Имя"
+                        <input class="popup__input popup__input_name" type="text" name="profileName" placeholder="Имя"
                             minlength="2" maxlength="40" autocomplete="off" required>
                         <span class="popup__input-error" id="nameInput-error"></span>
                     </div>
                     <div class="popup__input-element">
-                        <input class="popup__input popup__input_job" type="text" placeholder="Работа" name="job"
+                        <input class="popup__input popup__input_job" type="text" placeholder="Работа" name="profileJob"
                             minlength="2" maxlength="200" autocomplete="off" required>
                         <span class="popup__input-error" id="jobInput-error"></span>
                     </div>
@@ -65,7 +65,7 @@
         <div class="popup__container">
             <h2 class="popup__title">Новое место</h2>
             <button aria-label="закрыть" class="popup__close" type="button"></button>
-            <form name="popup_form popup_form-place" class="popup__form">
+            <form name="popup_form" class="popup__form popup_form-place">
 
                 <fieldset class="popup__block">
                     <div class="popup__input-element">

@@ -9,24 +9,26 @@ export default class Card {
 
   _setEventListeners() {
     this._cardElement.querySelector('.elements__like').addEventListener('click', (evt) => {
-      this._handleLikeButtonClick(evt);
+      evt.target.classList.toggle('elements__like_active');
     });
     this._cardElement.querySelector('.elements__delete').addEventListener('click', (evt) => {
-      this._handleRemoveButtonClick(evt);
+      this._cardElement.remove();
+      this._cardElement = null;
     });
     this._cardsElementImage.addEventListener('click', () => {
-      this._handleFormImage(this._cardsElementImage.src, this._cardsElementImage.alt);
+      this._handleFormImage();
     });
   }
-
+/*
   _handleLikeButtonClick(evt) {
     evt.target.classList.toggle('elements__like_active');
   }
 
   _handleRemoveButtonClick(evt) {
     evt.target.closest('.elements__list').remove();
-  }
 
+  }
+*/
   _getTemplateElement() {
     return document.querySelector(this._template).content.querySelector('.elements__list').cloneNode(true);
   }

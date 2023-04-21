@@ -10,9 +10,16 @@ import {
   popupAdd,
   profileEditBtn,
   placeAddBtn,
-  profileName,
-  profileJob,
+  nameInput ,
+  jobInput ,
   popupImage,
+  photoItem,
+  photoSubt,
+  //nameEditPopup,
+  //jobEditPopup,
+  popupEditForm,
+  popupAddForm,
+
 
 } from '../utils/content.js';
 import Section from '../components/Section.js';
@@ -20,77 +27,79 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 
+
 // информация формы редактирования
-const userInfo = new UserInfo({ profileName, profileJob });
+const userInfo = new UserInfo({ profileName: '.profile__title', profileJob: '.profile__subtitle' });
 
 // открытие фото 
-const popupPhotos = new PopupWithImage(popupImage);
+const popupPhotos = new PopupWithImage(popupImage, photoItem, photoSubt);
 popupPhotos.setEventListener();
 
 // отрисовка элементов на странице
 const cards = new Section({
   items: initialCards, renderer: (item) => {
-    const cardElement = createCard(item, template);
-    cards.addItem(cardElement);
+    //const cardElement = createCard(item, template);
+    cards.addItem(createCard(item));
   },
 }, elContainer);
 cards.renderItems();
 
 // генерация карточек
-function createCard(item) {
-  const card = new Card(item, template, () => {
-    popupPhotos.open(item.link, item.name);
+function createCard(items) {
+  const card = new Card(items, template, () => {
+    popupPhotos.open(items.link, items.name);
   });
   return card.createItemCard();
 };
 
-// открытие и закрытие попапа "редактирование"
-const popupEditProfile = new PopupWithForm(popupEdit, (evt) => {
-  evt.preventDefault();
-  const formValues = popupEditProfile.getFormValues();
-  userInfo.setUserInfo({
-    userName: formValues.name,
-    userDescription: formValues.job
-  });
+const submitEditingUserInfoForm = items => {
+  console.log( items.profileName);
+  console.log( items.profileJob);
+  userInfo.setUserInfo(items.profileName, items.profileJob); 
   popupEditProfile.close();
-});
+}
+
+const popupEditProfile = new PopupWithForm(popupEdit, submitEditingUserInfoForm);
 popupEditProfile.setEventListener();
 
-// открытие и закрытие попапа "добавления нового места"
-const popupAddPlace = new PopupWithForm(popupAdd, (evt) => {
-  evt.preventDefault();
-  const formValues = popupAddPlace.getFormValues();
-  const item = {
-    name: formValues.name,
-    link: formValues.link
-  };
-  popupAddPlace.close();
-  const cardElement = createCard(item, template);
-  cards.addNewItem(cardElement);
-});
+
+const submitAddingPhotocardForm = items => {
+  const photocardValue  = {
+  name: items.name,
+  link: items.link
+}
+popupAddPlace.close();
+cards.addNewItem(createCard(photocardValue ));
+}
+
+
+const popupAddPlace = new PopupWithForm(popupAdd,  submitAddingPhotocardForm);
 popupAddPlace.setEventListener();
 
+
 // обработка ошибок формы "редактирование"
-const popupEditFormValidator = new FormValidator(options, popupEditProfile.getFormElement());
+const popupEditFormValidator = new FormValidator(options, popupEditForm);
 popupEditFormValidator.enableValidation();
 
 // обработка ошибок формы "добавления нового места"
-const popupAddFormValidator = new FormValidator(options, popupAddPlace.getFormElement());
+const popupAddFormValidator = new FormValidator(options, popupAddForm);
 popupAddFormValidator.enableValidation();
 
+
 // слушатель кнопки "редактирование"
-profileEditBtn.addEventListener('click', () => {
+profileEditBtn.addEventListener('click', (e) => {
+  console.log(e);
   popupEditProfile.open();
-  const userInfoData = userInfo.getUserInfo();
-  const profileForm = popupEditProfile.getFormElement();
-  profileForm.elements.name.value = userInfoData.userName;
-  profileForm.elements.job.value = userInfoData.userDescription;
-  popupEditFormValidator.resetValidation();
+  const input = userInfo.getUserInfo();
+  nameInput.value = input.profileName;
+  jobInput.value = input.profileJob; 
+ 
+ // popupEditFormValidator.resetValidation();
 });
 
 // слушатель кнопки "добавления нового места"
 placeAddBtn.addEventListener('click', () => {
   popupAddPlace.open();
-  //popupAddFormValidator .toggleButtonState();
-  popupAddFormValidator.resetValidation();
+ // popupAddFormValidator.toggleButtonState();
+ // popupAddFormValidator.resetValidation();
 });

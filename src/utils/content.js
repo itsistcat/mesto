@@ -45,9 +45,20 @@ export const placeAddBtn = profile.querySelector('.profile__add-btn');
 export const popupEdit = '.popup_edit_profile';
 export const popupAdd = '.popup_add_place';
 
-export const profileName = '.profile__title';
-export const profileJob = '.profile__subtitle';
+//export const profileName = document.querySelector('.profile__title');
+//export const profileJob = document.querySelector('.profile__subtitle');
 
 export const popupImage = '.popup_type_image';
+export const photoItem = document.querySelector('.fullscreen');
+export const photoSubt = document.querySelector('.fullscreen-subtitle');
+
+export const nameInput  = document.querySelector('.popup__input_name');
+export const jobInput  = document.querySelector('.popup__input_job');
+
+export const popupEditForm = document.querySelector('.popup__container')
+export const popupAddForm = document.querySelector('.popup__container')
 
 
+
+export const formAddingPhotocard = document.querySelector('.popup_form-place')
+export const formEditingProfileInfo = document.querySelector('.popup_form-profile')
