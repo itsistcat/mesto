@@ -30,60 +30,62 @@
         </section>
 
         <!-- Элементы -->
-        <section class="elements"> </section>
+        <section class="elements"> 
+            
+        </section>
     </main>
 
     <footer class="footer">
         <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
     </footer>
 
-    <!-- Редактирование профиля -->
-    <div class="popup popup_edit_profile">
-        <div class="popup__container">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <button aria-label="закрыть" class="popup__close" type="button"></button>
-            <form name="popup_form" class="popup__form popup_form-profile">
-                <fieldset class="popup__block">
-                    <div class="popup__input-element">
-                        <input class="popup__input popup__input_name" type="text" name="profileName" placeholder="Имя"
-                            minlength="2" maxlength="40" autocomplete="off" required>
-                        <span class="popup__input-error" id="nameInput-error"></span>
-                    </div>
-                    <div class="popup__input-element">
-                        <input class="popup__input popup__input_job" type="text" placeholder="Работа" name="profileJob"
-                            minlength="2" maxlength="200" autocomplete="off" required>
-                        <span class="popup__input-error" id="jobInput-error"></span>
-                    </div>
-                </fieldset>
-                <button aria-label="сохранить" class="popup__save" type="submit">Сохранить</button>
-            </form>
+        <!-- Редактирование профиля -->
+        <div class="popup popup_edit_profile">
+            <div class="popup__container">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <button aria-label="закрыть" class="popup__close" type="button"></button>
+                <form name="popup_form" class="popup__form popup_form-edit">
+                    <fieldset class="popup__block">
+                        <div class="popup__input-element">
+                            <input class="popup__input popup__input_name" type="text" name="name" placeholder="Имя"
+                                minlength="2" maxlength="40" autocomplete="off" required>
+                            <span class="popup__input-error" id="nameInput-error"></span>
+                        </div>
+                        <div class="popup__input-element">
+                            <input class="popup__input popup__input_job" type="text" placeholder="Работа" name="job"
+                                minlength="2" maxlength="200" autocomplete="off" required>
+                            <span class="popup__input-error" id="jobInput-error"></span>
+                        </div>
+                    </fieldset>
+                    <button aria-label="сохранить" class="popup__save" type="submit">Сохранить</button>
+                </form>
+            </div>
         </div>
-    </div>
-
-    <!-- Форма добавления новой карточки -->
-    <div class="popup popup_add_place">
-        <div class="popup__container">
-            <h2 class="popup__title">Новое место</h2>
-            <button aria-label="закрыть" class="popup__close" type="button"></button>
-            <form name="popup_form" class="popup__form popup_form-place">
-
-                <fieldset class="popup__block">
-                    <div class="popup__input-element">
-                        <input class="popup__input popup__input_place" type="text" name="name" placeholder="Название"
-                            minlength="2" maxlength="30" autocomplete="off" required>
-                        <span class="popup__input-error" id="typePlace-error"></span>
-                    </div>
-                    <div class="popup__input-element">
-                        <input class="popup__input popup__input_url" type="url" id="typeUrl" name="link" 
-                        placeholder="Ссылка на картинку" autocomplete="off" required>
-                        <span class="popup__input-error" id="typeUrl-error"></span>
-                    </div>
-                </fieldset>
-
-                <button aria-label="сохранить" class="popup__save" type="submit">Cохранить</button>
-            </form>
+    
+        <!-- Форма добавления новой карточки -->
+        <div class="popup popup_add_place">
+            <div class="popup__container">
+                <h2 class="popup__title">Новое место</h2>
+                <button aria-label="закрыть" class="popup__close" type="button"></button>
+                <form name="popup_form" class="popup__form popup_form-place">
+    
+                    <fieldset class="popup__block">
+                        <div class="popup__input-element">
+                            <input class="popup__input popup__input_place" type="text" name="name" placeholder="Название"
+                                minlength="2" maxlength="30" autocomplete="off" required>
+                            <span class="popup__input-error" id="typePlace-error"></span>
+                        </div>
+                        <div class="popup__input-element">
+                            <input class="popup__input popup__input_url" type="url" id="typeUrl" name="link" 
+                            placeholder="Ссылка на картинку" autocomplete="off" required>
+                            <span class="popup__input-error" id="typeUrl-error"></span>
+                        </div>
+                    </fieldset>
+    
+                    <button aria-label="сохранить" class="popup__save" type="submit">Cохранить</button>
+                </form>
+            </div>
         </div>
-    </div>
 
     <!-- Карточки -->
     <template id="template" class="template template-list">
@@ -108,7 +110,6 @@
             <p class="fullscreen-subtitle"></p>
         </div>
     </div>
-
 </body>
 
 </html>

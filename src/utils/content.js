@@ -25,7 +25,7 @@ export const initialCards = [
   }
 ];
 
-export const options = {
+export const options  = {
   formSelector: '.popup__form',
   submitSelector: '.popup__save',
   inputSelector: '.popup__input',
@@ -45,20 +45,13 @@ export const placeAddBtn = profile.querySelector('.profile__add-btn');
 export const popupEdit = '.popup_edit_profile';
 export const popupAdd = '.popup_add_place';
 
-//export const profileName = document.querySelector('.profile__title');
-//export const profileJob = document.querySelector('.profile__subtitle');
+export const profileName = '.profile__title';
+export const profileJob = '.profile__subtitle';
 
 export const popupImage = '.popup_type_image';
-export const photoItem = document.querySelector('.fullscreen');
-export const photoSubt = document.querySelector('.fullscreen-subtitle');
 
-export const nameInput  = document.querySelector('.popup__input_name');
-export const jobInput  = document.querySelector('.popup__input_job');
+export const formEdit = document.querySelector('.popup_form-edit');
+export const formAdd = document.querySelector('.popup_form-place');
 
-export const popupEditForm = document.querySelector('.popup__container')
-export const popupAddForm = document.querySelector('.popup__container')
-
-
-
-export const formAddingPhotocard = document.querySelector('.popup_form-place')
-export const formEditingProfileInfo = document.querySelector('.popup_form-profile')
+export const inputName = formEdit.querySelector('.popup__input_name');
+export const inputJob = formEdit.querySelector('.popup__input_job');

@@ -1,6 +1,6 @@
 export default class FormValidator {
-    constructor(options, form) {
-        this._options = options;
+    constructor(validationProps , form) {
+        this._options = validationProps ;
         this._form = form;
         this._inputs = Array.from(this._form.querySelectorAll(this._options.inputSelector));
         this._submitElement = this._form.querySelector(this._options.submitSelector);
@@ -73,6 +73,3 @@ export default class FormValidator {
         });
     }
 }
-
-
-

@@ -1,6 +1,10 @@
 import './index.css';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import UserInfo from '../components/UserInfo.js';
 import {
   initialCards,
   options,
@@ -10,96 +14,90 @@ import {
   popupAdd,
   profileEditBtn,
   placeAddBtn,
-  nameInput ,
-  jobInput ,
+  profileName,
+  profileJob,
   popupImage,
-  photoItem,
-  photoSubt,
-  //nameEditPopup,
-  //jobEditPopup,
-  popupEditForm,
-  popupAddForm,
-
-
-} from '../utils/content.js';
-import Section from '../components/Section.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import UserInfo from '../components/UserInfo.js';
-
+  inputName,
+  inputJob,
+  formEdit,
+  formAdd,
+} from "../utils/content.js";
 
 // информация формы редактирования
-const userInfo = new UserInfo({ profileName: '.profile__title', profileJob: '.profile__subtitle' });
+const userInfo = new UserInfo({ profileName, profileJob });
 
 // открытие фото 
-const popupPhotos = new PopupWithImage(popupImage, photoItem, photoSubt);
+const popupPhotos = new PopupWithImage(popupImage);
 popupPhotos.setEventListener();
 
 // отрисовка элементов на странице
 const cards = new Section({
   items: initialCards, renderer: (item) => {
-    //const cardElement = createCard(item, template);
-    cards.addItem(createCard(item));
+    const cardElement = createCard(item, template);
+    cards.addItem(cardElement);
   },
 }, elContainer);
 cards.renderItems();
 
 // генерация карточек
-function createCard(items) {
-  const card = new Card(items, template, () => {
-    popupPhotos.open(items.link, items.name);
+function createCard(item) {
+  const card = new Card(item, template, () => {
+    popupPhotos.open(item.link, item.name);
   });
   return card.createItemCard();
 };
 
-const submitEditingUserInfoForm = items => {
-  console.log( items.profileName);
-  console.log( items.profileJob);
-  userInfo.setUserInfo(items.profileName, items.profileJob); 
+// открытие и закрытие попапа "редактирование"
+const popupEditProfile = new PopupWithForm(popupEdit, (FormValues) => {
+  //evt.preventDefault();
+  //const formValues = popupEditProfile.getFormValues(evt);
+  userInfo.setUserInfo({
+    userName: FormValues.name,
+    userDescription: FormValues.job
+  });
   popupEditProfile.close();
-}
-
-const popupEditProfile = new PopupWithForm(popupEdit, submitEditingUserInfoForm);
+});
 popupEditProfile.setEventListener();
 
-
-const submitAddingPhotocardForm = items => {
-  const photocardValue  = {
-  name: items.name,
-  link: items.link
-}
-popupAddPlace.close();
-cards.addNewItem(createCard(photocardValue ));
-}
-
-
-const popupAddPlace = new PopupWithForm(popupAdd,  submitAddingPhotocardForm);
+// открытие и закрытие попапа "добавления нового места"
+const popupAddPlace = new PopupWithForm(popupAdd, (FormValues) => {
+ // evt.preventDefault();
+  //const formValues = popupAddPlace.getFormValues(evt);
+  
+  const item = {
+    name: FormValues.name,
+    link: FormValues.link
+  };
+  
+ console.log(FormValues.name)
+ console.log(FormValues.link)
+  popupAddPlace.close();
+  const cardElement = createCard(item, template);
+  cards.addNewItem(cardElement);
+});
 popupAddPlace.setEventListener();
 
-
 // обработка ошибок формы "редактирование"
-const popupEditFormValidator = new FormValidator(options, popupEditForm);
+const popupEditFormValidator = new FormValidator(options, formEdit);
 popupEditFormValidator.enableValidation();
 
 // обработка ошибок формы "добавления нового места"
-const popupAddFormValidator = new FormValidator(options, popupAddForm);
+const popupAddFormValidator = new FormValidator(options, formAdd);
 popupAddFormValidator.enableValidation();
 
-
 // слушатель кнопки "редактирование"
-profileEditBtn.addEventListener('click', (e) => {
-  console.log(e);
+profileEditBtn.addEventListener('click', () => {
   popupEditProfile.open();
-  const input = userInfo.getUserInfo();
-  nameInput.value = input.profileName;
-  jobInput.value = input.profileJob; 
- 
- // popupEditFormValidator.resetValidation();
+  const userInfoData = userInfo.getUserInfo();
+
+  inputName.value = userInfoData.userName;
+  inputJob.value = userInfoData.userDescription;
+  popupEditFormValidator.resetValidation();
 });
 
 // слушатель кнопки "добавления нового места"
 placeAddBtn.addEventListener('click', () => {
   popupAddPlace.open();
- // popupAddFormValidator.toggleButtonState();
- // popupAddFormValidator.resetValidation();
+  //popupAddFormValidator .toggleButtonState();
+  popupAddFormValidator.resetValidation();
 });

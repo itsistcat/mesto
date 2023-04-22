@@ -8,27 +8,26 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._cardElement.querySelector('.elements__like').addEventListener('click', (evt) => {
-      evt.target.classList.toggle('elements__like_active');
+    this._cardButtonLike = this._cardElement.querySelector('.elements__like')
+    this._cardButtonLike.addEventListener('click', () => {
+      this._handleLikeButtonClick();
     });
-    this._cardElement.querySelector('.elements__delete').addEventListener('click', (evt) => {
-      this._cardElement.remove();
-      this._cardElement = null;
+    this._cardButtonDeletion = this._cardElement.querySelector('.elements__delete').addEventListener('click', () => {
+      this._handleRemoveButtonClick();
     });
     this._cardsElementImage.addEventListener('click', () => {
-      this._handleFormImage();
+      this._handleFormImage(this._cardsElementImage.src, this._cardsElementImage.alt);
     });
   }
-/*
-  _handleLikeButtonClick(evt) {
-    evt.target.classList.toggle('elements__like_active');
+
+  _handleLikeButtonClick() {
+    this._cardButtonLike.classList.toggle('elements__like_active');
   }
 
-  _handleRemoveButtonClick(evt) {
-    evt.target.closest('.elements__list').remove();
-
+  _handleRemoveButtonClick() {
+    this._cardElement.remove();
   }
-*/
+
   _getTemplateElement() {
     return document.querySelector(this._template).content.querySelector('.elements__list').cloneNode(true);
   }
