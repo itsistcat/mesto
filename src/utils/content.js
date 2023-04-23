@@ -50,8 +50,8 @@ export const profileJob = '.profile__subtitle';
 
 export const popupImage = '.popup_type_image';
 
-export const formEdit = document.querySelector('.popup_form_edit');
-export const formAdd = document.querySelector('.popup_form_place');
+export const formEdit = document.querySelector('.popup__form_edit');
+export const formAdd = document.querySelector('.popup__form_place');
 
 export const inputName = formEdit.querySelector('.popup__input_name');
 export const inputJob = formEdit.querySelector('.popup__input_job');
