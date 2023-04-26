@@ -48,29 +48,29 @@ function createCard(item) {
 };
 
 // открытие и закрытие попапа "редактирование"
-const popupEditProfile = new PopupWithForm(popupEdit, (FormValues) => {
+const popupEditProfile = new PopupWithForm(popupEdit, (formValues) => {
   //evt.preventDefault();
   //const formValues = popupEditProfile.getFormValues(evt);
   userInfo.setUserInfo({
-    userName: FormValues.name,
-    userDescription: FormValues.job
+    userName: formValues.name,
+    userDescription: formValues.job
   });
   popupEditProfile.close();
 });
 popupEditProfile.setEventListener();
 
 // открытие и закрытие попапа "добавления нового места"
-const popupAddPlace = new PopupWithForm(popupAdd, (FormValues) => {
+const popupAddPlace = new PopupWithForm(popupAdd, (formValues) => {
  // evt.preventDefault();
   //const formValues = popupAddPlace.getFormValues(evt);
   
   const item = {
-    name: FormValues.name,
-    link: FormValues.link
+    name: formValues.name,
+    link: formValues.link
   };
   
- console.log(FormValues.name)
- console.log(FormValues.link)
+ console.log(formValues.name)
+ console.log(formValues.link)
   popupAddPlace.close();
   const cardElement = createCard(item, template);
   cards.addNewItem(cardElement);
