@@ -34,7 +34,7 @@ export const formAdd = document.querySelector('.popup__form_place');
 export const inputName = formEdit.querySelector('.popup__input_name');
 export const inputJob = formEdit.querySelector('.popup__input_job');
 
-export const popupConfirmation = '.popup__confirmation';
+export const popupConfirmation = '.popup_delete_place';
 
 export const formAvatar = document.querySelector('.popup__form_avatar');//formEditingUserAvatar
 export const popupAvatar = '.popup_type_avatar';//popupTypeEditingUserAvatar
