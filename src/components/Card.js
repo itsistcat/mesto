@@ -15,6 +15,8 @@ export default class Card {
 
   _setEventListeners() {
     this._cardButtonLike = this._cardElement.querySelector('.elements__like')
+    this._likesCounter = this._cardElement.querySelector('.elements__like-counter');
+    this._cardsElementImage = this._cardElement.querySelector('.elements__photo');
     this._cardButtonLike.addEventListener('click', () => {
       console.log(this._id);
       this._handleLikeClick(this._id);
@@ -56,7 +58,7 @@ export default class Card {
   // Отображение количества лайков
   showPhotocardLikes(newLikes) {
     this._imageLikes = newLikes;
-    this._likesCounter = this._cardElement.querySelector('.elements__like-counter');
+  
     if (this._imageLikes.length > 0) {
       this._likesCounter.textContent = this._imageLikes.length;
       this._likesCounter.style.display = 'inline-block';
@@ -74,7 +76,7 @@ export default class Card {
 
   createItemCard() {
     this._cardElement = this._getTemplateElement();
-    this._cardsElementImage = this._cardElement.querySelector('.elements__photo');
+   
     this._setEventListeners();
 
     this._cardsElementImage.src = this._imageLink;

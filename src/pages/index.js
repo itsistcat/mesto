@@ -54,7 +54,7 @@ function createCard(item) {
     popupPhotos.open(item.link, item.name);
   }, (id) => {
     popupConfirmationDeletion.open();
-    popupConfirmationDeletion.submitDeletion(() => {
+    popupConfirmationDeletion.setSubmitDeletion(() => {
       api.deleteCards(id)
         .then((item) => {
           card.handleRemoveButtonClick(item);
@@ -71,10 +71,16 @@ function createCard(item) {
           .then((response) => {
             card.showPhotocardLikes(response.likes);
           })
+          .catch((error) => {
+            console.log(`Ошибка при удалении лайке: ${error}`);
+          })
       } else {
         api.addLike(id)
           .then((response) => {
             card.showPhotocardLikes(response.likes);
+          })
+          .catch((error) => {
+            console.log(`Ошибка при лайке: ${error}`);
           })
       }
     });
@@ -90,14 +96,14 @@ const popupEditProfile = new PopupWithForm(popupEdit, data => {
         userName: formValues.name,
         userDescription: formValues.about
       });
+      popupEditProfile.close();
     })
     .catch((error) => {
-      console.log(error);
+      console.log(`Ошибка при изменении информации о пользователе: ${error}`);
     })
     .finally(() => {
       popupEditProfile.renderLoading(false);
     })
-  popupEditProfile.close();
 })
 popupEditProfile.setEventListener();
 
@@ -116,7 +122,6 @@ const popupAddPlace = new PopupWithForm(popupAdd, (formValues) => {
     .finally(() => {
       popupAddPlace.renderLoading(false);
     })
-  popupAddPlace.close();
 })
 popupAddPlace.setEventListener();
 
@@ -126,6 +131,7 @@ const popupEditAvatar = new PopupWithForm(popupAvatar, (formValues) => {
   api.editUserAvatar(formValues.profileAvatar)
     .then((data) => {
       userInfo.setUserAvatar(data.avatar);
+      popupEditAvatar.close();
     })
     .catch((error) => {
       console.log(`Ошибка при сохранение аватара: ${error}`);
@@ -133,7 +139,6 @@ const popupEditAvatar = new PopupWithForm(popupAvatar, (formValues) => {
     .finally(() => {
       popupEditAvatar.renderLoading(false);
     })
-    popupEditAvatar.close();
 });
 popupEditAvatar.setEventListener();
 
@@ -194,8 +199,11 @@ Promise.all([api.getUserInfo(), api.getCards()])
     cards.renderItems(photo);
   })
   .catch((error) => {
-    console.log(`Ошибка api: ${error}`);
+    console.log(`Ошибка: ${error}`);
   })
+  // .catch((error) => {
+  //   console.log(`Ошибка api: ${error}`);
+  // })
 
 
 // // Информация о пользователе
